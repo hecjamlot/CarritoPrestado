@@ -2,12 +2,12 @@
     <div *ngFor="let product of products">
         <div class="col-xs-4">
             <div class="thumbnail product">
-            
+
         <md-card class="example-card">
             <md-card-header>
                 <div md-card-avatar class="example-header-image"></div>
                 <md-card-title>
-                    <span class="badge">{{product.id}}</span> <strong>{{product.name}}</strong>    
+                    <span class="badge">{{product.id}}</span> <strong>{{product.name}}</strong>
                 </md-card-title>
             </md-card-header>
 
@@ -15,9 +15,13 @@
             <md-card-content>
                <p>{{product.info}}</p>
             </md-card-content>
+            <md-card-content>
+              <p>Unidades Disponibles {{product.inStock}}</p>
+            </md-card-content>
             <md-card-actions>
                 <h1 class="badge">${{product.price}}</h1>
-                <button (click)="addToCart(product)" class="btn btn-sm btn-primary">Add to Cart</button>
+                <p *ngIf="product.inStock>0"><button (click)="addToCart(product)" class="btn btn-sm btn-primary">Add to Cart</button></p>
+                <p *ngIf="product.inStock===0"> Agotado </p>
                 <button (click)="clickedProduct(product)" class="btn btn-sm btn-success">Details</button>
             </md-card-actions>
         </md-card>

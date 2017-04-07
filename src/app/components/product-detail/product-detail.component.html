@@ -1,10 +1,12 @@
 <div *ngIf="selectedProduct">
-    
+
     <div class="col-md-6 well">
             <span class="badge">{{selectedProduct.id}}</span> <strong>{{selectedProduct.name}}</strong>
             <p>{{selectedProduct.info}}</p>
             <h1 class="badge">${{selectedProduct.price}}</h1>
-            <button (click)="addToCart(selectedProduct)" class="btn btn-md btn-primary">Add to Cart</button>
+            <h1 class="badge">${{selectedProduct.inStock}}</h1>
+            <p *ngIf="selectedProduct.inStock>0"> <button (click)="addToCart(selectedProduct)" class="btn btn-md btn-primary">Add to Cart</button>
+            <p *ngIf="selectedProduct.inStock===0"> Agotado </p>
             <hr />
             <button (click)="goBack()" class="btn btn-danger">Back</button>
     </div>
